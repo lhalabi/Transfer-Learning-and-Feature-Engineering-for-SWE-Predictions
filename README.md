@@ -47,9 +47,12 @@ All models, except the base models, were trained between September and November 
 | ------------- | ------------- |
 | `Base_models.zip` | The 5 trained Base models. The Base model used in transfer learning is Base model 3. |
 | `Local_1.tar` | 12 Local 1 models|
-| `Colorado_ScaledLMs.zip` | 12 older Local 1 models that serve as the architecture template of Local 1 and Local 1_W models |
+| `Local_1_W.tar` | 12 Local 1_W models|
 | `TL1.tar` | 12 TL1 models |
 | `TL1_W.tar.zip` | 12 TL1_W models |
+| `TL2.tar` | 12 TL2 models |
+| `TL2_W.tar.zip` | 12 TL2_W models |
+| `Colorado_ScaledLMs.zip` | 12 older Local 1 models that serve as the architecture template of Local 1 and Local 1_W models |
 
 
 ## Factor Analysis Results
