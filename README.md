@@ -26,6 +26,29 @@ Figure 1: Spatial extent and frequency of lidar-derived SWE maps used in this st
 | `Final_processed_California_topography_SWE_snapshots.zip` | Processed ASO SWE maps and Topography files in California. |
 | `Final_processed_Colorado_topography_SWE_snapshots.zip` | Processed ASO SWE maps and Topography files in Colorado. |
 
+## Transfer Learning and Benchmark Models
+We adopted a feed-forward Artificial Neural Network (ANN) architecture, initially training a base model on the source data which corresponds to California's 80 SWE maps. Subsequently, we considered four different modeling approaches to adapt the base model to perform the target task of predicting SWE in Colorado (Figure 2). The first two approaches were: 
+
+• Model TL1: This involved freezing the shallower layers (preventing their weights from changing) and retraining only the deeper layers.
+
+• Model TL2: This involved freezing all the weights of the model, removing deeper layers, and adding new layers whose weights were trained on the target data.
+
+The two approaches were picked because the deeper layers help capture the higher order complexities in the relationship between input features and the output, while the shallower layers generally capture coarser and simpler relationships. Complex relationships in the deeper layers of the base model may be more particular to the source task, while the information in the shallower layers may be more easily generalized to the target task. Additionally, it is important to mention that in our analysis, permutation feature importance applied to the transfer learning models revealed that elevation, accumulated snow, and accumulated precipitation were not predominant factors during training. This finding contrasted with our EFA results, which highlighted elevation, snow, and precipitation as critical variables in determining SWE values in Colorado. Therefore, we developed a third transfer learning approach where the importance of these variables was prescribed:
+
+• Model TL1_W: The approach was similar to TL1, however the elevation, snow, and precipitation features where multiplied by weights greater than 1. The weights were treated as hyperparameters and the optimal weights were found using Optuna, an open-source automatic hyperparameter optimization framework.
+
+• Model TL2_W: The approach was similar to TL2, however the elevation, snow, and precipitation features where multiplied by weights greater than 1. The weights were treated as hyperparameters and the optimal weights were found using Optuna.
+
+• Local Models: the performance of transfer learning models was benchmarked against local models trained only on data from Colorado. This helps to validate the added value of transfer learning in improving SWE prediction accuracy. We considered two versions of local models: Local 1 considers scaled input variables per the usual machine learning practice, while Local 1_W prescribes importance to elevation, snow, and precipitation in a manner similar to model TL1_W and TL2_W.
+
+All models, except the base models, were trained between September and November 2024 using the specified Python and Keras versions. The architectures for the local models were optimized in a prior study (2022) and saved for consistency. To ensure version alignment for accurate comparison, the saved architectures were cloned, and new local models were retrained. Two sets of Local 1 models are available on GitHub: one serves as the architecture template for the retrained models, while the second set comprises the models being compared in this study.
+
+| File | Description |
+| ------------- | ------------- |
+| `Base_models.zip` | The 5 trained Base models. The Base model used in transfer learning is Base model 3. |
+| `Colorado_ScaledLMs.zip` | 12 older Local 1 models that serve as the architecture template of Local models |
+
+
 ## Factor Analysis Results
 
 We developed four explanatory factor analysis (EFA) models: two EFA models describing Colorado datasets (one each for March-April and June), and two EFA models describing California datasets (one each for March-April and June). EFA models captured between 0.64 to 0.72 of the total variance in our dataset. All models were able to capture a large proportion of the variance in elevation, accumulated snow, accumulated precipitation, sum PDD (with the exception for March-April in Colorado), and $T_{mean}$. For SWE, the four EFA models were able to capture 0.75, 0.78, 0.74, and 0.57 of the variance.
