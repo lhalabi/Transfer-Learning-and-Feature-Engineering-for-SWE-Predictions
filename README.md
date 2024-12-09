@@ -51,7 +51,7 @@ All models, except the base models, were trained between September and November 
 | `TL1.tar` | 12 TL1 models |
 | `TL1_W.tar.zip` | 12 TL1_W models |
 | `TL2.tar` | 12 TL2 models |
-| `TL2_W.tar.zip` | 12 TL2_W models |
+| `TL2_W.tar` | 12 TL2_W models |
 | `Colorado_ScaledLMs.zip` | 12 older Local 1 models that serve as the architecture template of Local 1 and Local 1_W models |
 
 
