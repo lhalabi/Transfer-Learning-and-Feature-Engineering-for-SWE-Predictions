@@ -79,4 +79,11 @@ Figure 4: EFA Loading plots illustrating the principal factors for Colorado and 
 
 The analysis reveals consistent patterns across both Colorado and California, with elevation and accumulated snow consistently driving high SWE values throughout different months. Additionally, low temperatures are consistently related to high SWE values in both regions across various time periods. This indicates that transfer learning could be implemented to predict SWE in Colorado using data from California. However, disparities emerge in the influence of precipitation and temperature-driven processes, with Colorado showing a stronger dependence on precipitation and California exhibiting a more pronounced sensitivity to temperature-related factors, particularly in March-April. There is also a disparity in the effect of slope on SWE values in Colorado and California. These point to differences in higher-order complexities in relationships between the predictors and SWE across Colorado and California. The importance of elevation, accumulated snow, and accumulated precipitation in Colorado, coupled with the reduced significance of precipitation in California, motivated the application of weights to these three variables in our modeling approach. Lastly, there is notable seasonal variability in SWE in Colorado, as evidenced by the more pronounced importance of temperature-related processes in June compared to March.
 
+## SWE Prediction Results
+
+Table 2 and Table 3 summarize the $R^2$ and $KGE$ values for local models and TL models. The analysis of model performance across KGE, $R^2$, and bias metrics demonstrates that TL1W and TL2W consistently
+<div align=center><image src="./Figures/SWE_results.png"></div>
+<p align=center>
+Table 1: $R^2$ values for modeling SWE. 
+</p> 
 
