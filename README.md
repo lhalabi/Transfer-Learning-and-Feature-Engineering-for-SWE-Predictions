@@ -57,6 +57,16 @@ All models, except the base models, were trained between September and November 
 | `TL2_W.tar` | 12 TL2_W models |
 | `Colorado_ScaledLMs.zip` | 12 older Local 1 models that serve as the architecture template of Local 1 and Local 1_W models |
 
+## Code Description
+Bayesian Hyperparameter optimization for Base models and Local 1 models was conducted using the opensource framework Ax, Adaptive Experimentation platform (Bakshy et al., 2018), following this [**tutorial**](https://www.justintodata.com/hyperparameter-tuning-with-python-keras-guide/). The hyperparameter search space included activation function, feature scaling techniques, optimization function, learning rate, number of hidden layers, number of neurons per layer, dropout rate, L1 and L2 regularization rates, and batch size. 
+
+For TL1 and TL2 models, the hyperparameters were kept consistent with those optimized for the Base model. However, hyperparameter tuning specific to transfer learning was performed manually for parameters unique to these models, including the number of frozen hidden layers, the number of removed hidden layers, and the number of newly added hidden layers. Each type of Local and TL models was trained using a leave-one-out (LOO) cross-validation approach to ensure robust performance evaluation. Lastly, Factor Analysis was conducted using the package FactorAnalyzer in Python with varimax rotation (Biggs & Madnani, 2021). 
+| File | Description |
+| ------------- | ------------- |
+| `California_base_models.ipynb/California_base_models_sample_code.ipynb` | Jupyter Notebook used for hyperparameter optimization, training and testing of ANNs on California data to predict SWE in California. 5 models are trained each with a different training/validation split. The models are called Base models. Notebook California_base_models.ipynb shows the training procedure of Base model 3 and the test results. California_base_models_sample_code.ipynb is a cleaned sample code. |
+| `Colorado local Models.ipynb.zip` | Jupyter Notebook used for hyperparameter optimization, training and testing of ANNs on Colorado data to predict SWE in Colorado. 12 models are trained and tested using the LOO method since there are 12 SWE maps. The models are the 12 older Local 1 models that serve as the architecture template of Local 1 and Local 1W models. |
+| `FA_winter/FA_summer.ipynb` | Jupyter Notebooks used to apply explanatory factor analysis on California and Colorado winter (March/April) and summer (June) data.|
+| `FA_winter/FA_summer.ipynb` | Jupyter Notebooks used to apply explanatory factor analysis on California and Colorado winter (March/April) and summer (June) data.|
 
 ## Factor Analysis Results
 
