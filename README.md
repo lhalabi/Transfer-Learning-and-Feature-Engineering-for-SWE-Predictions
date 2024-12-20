@@ -34,15 +34,15 @@ We adopted a feed-forward ANN architecture, initially training a Base model on t
 
 The two approaches were picked because the deeper layers help capture the higher-order complexities in the relationship between input features and the output, while the shallower layers generally capture coarser and simpler relationships. However, analysis using permutation feature importance revealed that the transfer learning models under TL1 and TL2 gave lower importance to elevation, accumulated snow, and accumulated precipitation- variables identified as critical for determining SWE in Colorado based on EFA results (Figures 3 and 4). To address this discrepancy, we introduced two additional transfer learning approaches that explicitly prioritized these variables by prescribing their importance:
 
-• Model TL1W: This model utilized the architecture and hyperparameters of the best performing TL1 model but modified the scaled input features by multiplying elevation, accumulated snow, and accumulated precipitation by (scalar) weights equal or greater than 1. These weights were treated as hyperparameters and optimized using Optuna, an open-source framework for automatic hyperparameter optimization.
+• Model TL1W: This utilized the architecture and hyperparameters of the best performing set of TL1 models but modified the scaled input features by multiplying elevation, accumulated snow, and accumulated precipitation by (scalar) weights equal or greater than 1. These weights were treated as hyperparameters and optimized using Optuna, an open-source framework for automatic hyperparameter optimization.
 
-• Model TL2W: This model followed the same principle as TL1W, but used the architecture and hyperparameters of the best performing TL2 model. The weights for elevation, accumulated snow and accumulated precipitation were again optimized using Optuna.
+• Model TL2W: This followed the same principle as TL1W, but used the architecture and hyperparameters of the best performing set of TL2 models. The weights for elevation, accumulated snow and accumulated precipitation were again optimized using Optuna.
 
 The performance of transfer learning models was benchmarked against local models trained only on data from Colorado. This helps to validate the added value of transfer learning in improving SWE prediction accuracy. We considered two versions of local models:
 
-• Local 1: considers scaled input variables per the usual machine learning practice
+• Local 1: This considers scaled input variables per the usual machine learning practice
 
-• Local 1W: This model followed the same principle as TL1W, but used the architecture and hyperparameters of the best performing Local 1 model. The weights for elevation, accumulated snow and accumulated precipitation were again optimized using Optuna.
+• Local 1W: This followed the same principle as TL1W, but used the architecture and hyperparameters of the best performing set of Local 1 models. The weights for elevation, accumulated snow and accumulated precipitation were again optimized using Optuna.
 
 All models, except the base models, were trained between September and November 2024 using the specified Python and Keras versions (python 3.6.1, Keras 2.6.0, and Tensorflow 2.6.2 versions). The architectures for the local models were optimized by Ax in a prior study (2022) and saved. To ensure version alignment for accurate comparison, the saved architectures were cloned, and new local models were retrained using python 3.6.1, Keras 2.6.0, and Tensorflow 2.6.2 versions. Two sets of Local 1 models are available on GitHub: one serves as the architecture template for the retrained models (`Colorado_ScaledLMs.zip`), while the second set comprises the models being compared in this study (`Local_1.tar`).
 
