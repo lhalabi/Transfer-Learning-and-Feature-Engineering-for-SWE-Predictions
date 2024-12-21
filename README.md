@@ -98,16 +98,28 @@ The analysis reveals consistent patterns across both Colorado and California, wi
 
 ## SWE Prediction Results
 
-Table 1 summarizes the $R^2$, $KGE$, and normalized bias results for local models and TL models. 
+Table 1 summarizes the $R^2$, $KGE$, and normalized bias results for local models and TL models. The analysis of model performance across $KGE$, $R^2$, and absolute bias metrics demonstrates that TL1W and TL2W consistently outperform all other models. Additionally, TL1W models outperform TL2W models in terms of $KGE$ and absolute bias values. All transfer learning models (TL1, TL1W, TL2, TL2W) reduce standard deviations across metrics, emphasizing the robustness of transfer learning approaches overall. While unweighted transfer learning models (TL1, TL2) do not underperform compared to Local 1 models, they also fail to significantly outperform them in terms of $KGE$, $R^2$, and bias. Weighted local models (Local 1W) underperform relative to both Local 1 models and all transfer learning models. The performance gap between Local 1W and TL1W in $R^2$, $KGE$ and bias underscores that the benefits of weighting are more effectively realized when combined with transfer learning rather than applied to local-only models.
 
-**Table 1: Comparison of Model Metrics**
+**Table 1: Comparison of model types across metrics**
 | Metric                          | Local 1 | Local 1W | TL1  | TL1W | TL2  | TL2W |
 |---------------------------------|---------|----------|------|------|------|------|
 | Mean $R^2$                      | 0.45    | 0.38     | 0.43 | 0.53 | 0.44 | 0.54 |
 | Mean $KGE$                      | 0.59    | 0.51     | 0.59 | 0.67 | 0.59 | 0.61 |
 | Mean absolute normalized bias   | 0.24    | 0.25     | 0.26 | 0.17 | 0.26 | 0.21 |
 
-|Model | Elevation | Accumulated Snow | Sccumulated Precipitation |
-| Local 1W | 1 | 14 | 24 |
-| TL1W | 3 | 16 | 5 |
-| TL2W | 1 | 16 | 3 |
+## Feature Importance Results
+Table 2 outlines the weights assigned to elevation, accumulated snow, and precipitation for each model type, while Figure 5 presents the feature importance results, illustrating the effects of weighting and transfer learning on predictor significance. The weighted models (Local 1W, TL1W, and TL2W) show significant increases in the importance of accumulated snow and precipitation, aligning with the applied weights for these variables, which exceed unity. Although the weighting for elevation is set to 1 in TL2W, its feature importance transitions from negative in TL2 to positive in TL2W. This indirect enhancement is driven by the weighting of accumulated snow and precipitation, suggesting that applying weights to certain variables can amplify the role of related predictors without directly weighting them.
+
+In contrast, while elevation is also weighted at 1 in Local 1W, its importance remains unchanged compared to Local 1. This discrepancy underscores that transfer learning better captures the interactions between elevation and other predictors under a weighted scheme. Furthermore, the feature importance distributions of weighted models (Local  1W, TL1W, and TL2W) exhibit narrower interquartile ranges for key variables such as elevation, accumulated snow, and precipitation, reflecting more consistent contributions across test sets. Notably, TL1W and TL2W demonstrate less variability in feature importance distributions compared to Local 1W, highlighting that transfer learning combined with weighting stabilizes the influence of critical features.
+
+**Table 2: Weighting values used for SWE modeling**
+| Model    | Elevation | Accumulated Snow | Accumulated Precipitation |
+|----------|-----------|------------------|---------------------------|
+| Local 1W | 1         | 14               | 24                        |
+| TL1W     | 3         | 16               | 5                         |
+| TL2W     | 1         | 16               | 3                         |
+
+
+
+
+
