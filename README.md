@@ -46,6 +46,11 @@ The performance of transfer learning models was benchmarked against local models
 
 All models, except the base models, were trained between September and November 2024 using the specified Python and Keras versions (python 3.6.1, Keras 2.6.0, and Tensorflow 2.6.2 versions). The architectures for the local models were optimized by Ax in a prior study (2022) and saved. To ensure version alignment for accurate comparison, the saved architectures were cloned, and new local models were retrained using python 3.6.1, Keras 2.6.0, and Tensorflow 2.6.2 versions. Two sets of Local 1 models are available on GitHub: one serves as the architecture template for the retrained models (`Colorado_ScaledLMs.zip`), while the second set comprises the models being compared in this study (`Local_1.tar`).
 
+<div align=center><image src="./Figures/TL_schematic.png"></div>
+<p align=center>
+Figure 2: Schematic describing the different TL models considered in this study. 
+</p> 
+  
 | File | Description |
 | ------------- | ------------- |
 | `Base_models.zip` | The 5 trained Base models. The Base model used in transfer learning is Base model 3. |
