@@ -99,8 +99,11 @@ The analysis reveals consistent patterns across both Colorado and California, wi
 ## SWE Prediction Results
 
 Table 2 and Table 3 summarize the $R^2$ and $KGE$ values for local models and TL models. The analysis of model performance across KGE, $R^2$, and bias metrics demonstrates that TL1W and TL2W consistently
-<div align=center><image src="./Figures/SWE_results.png"></div>
-<p align=center>
-Table 1: $R^2$ values for modeling SWE. 
-</p> 
+| Metric | Local 1 | Local 1W | TL1 | TL1W | TL2 | TL2W |
+| ______ | ______ | ______ | ______ | ______ | ______ | ______ |
+| Mean $R^2$ | 0.45| 0.38 | 0.43 | 0.53 | 0.44 | 0.54 |
+| Mean $KGE$ | 0.59 | 0.51 | 0.59 | 0.67 | 0.59 | 0.61 |
+| Mean absolute normalized bias | 0.24 | 0.25 | 0.26 | 0.17 | 0.26 | 0.21 |
 
+|Model | Elevation | Accumulated Snow | Sccumulated Precipitation |
+| ---- | Elevation | Accumulated Snow | Sccumulated Precipitation |
