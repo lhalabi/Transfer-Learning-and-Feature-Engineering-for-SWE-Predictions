@@ -119,8 +119,6 @@ In contrast, while elevation is also weighted at 1 in Local 1W, its importance r
 | TL1W     | 3         | 16               | 5                         |
 | TL2W     | 1         | 16               | 3                         |
 
-# Feature Importance Box Plots
-
 <div align="center">
   <h4>(a) Local Models</h4>
   <img src="Figures/BOXplot_feature_imp_test_Local_seed=900.png" alt="Local Models" width="80%">
@@ -140,6 +138,28 @@ In contrast, while elevation is also weighted at 1 in Local 1W, its importance r
   <b>Figure 5:</b> Feature importance box plots for (a) Local Models, (b) TL1 Models, and (c) TL2 Models. The x-axis shows the variables, and the y-axis represents importance measured as R<sup>2</sup> decrease.
 </p>
 
+## References
+<a id="1">[1]</a> 
+Painter, T. (2018). Aso l4 lidar snow water equivalent 50m utm grid, version 1, nasa national snow and ice data center distributed active archive center, boulder, colorado usa.
+
+<a id="1">[2]</a> 
+Daly, C., Halbleib, M., Smith, J. I., Gibson, W. P., Doggett, M. K., Taylor, G. H.,. . . Pasteris, P. P. (2008). Physiographically sensitive mapping of climatological temperature and precipitation across the conterminous united states. International Journal of Climatology: a Journal of the Royal Meteorologica Society, 28 (15), 2031–2064
+
+<a id="1">[3]</a> 
+Gesch, D. B., Evans, G. A., Oimen, M. J., & Arundel, S. (2018). The national elevation dataset. https://apps.nationalmap.gov. U.S. Geological Survey. (Accessed: 2022-04-15)
+
+<a id="1">[4]</a> 
+Biggs, J., & Madnani, N. (2021). factor analyzer. GitHub. Retrieved from https://github.com/EducationalTestingService/factor\ analyzer/blob/main/factor\ analyzer/factor\ analyzer.py
+
+<a id="1">[5]</a> 
+Bakshy, E., Dworkin, L., Karrer, B., Kashin, K., Letham, B., Murthy, A., & Singh,S. (2018). Ae: A domain-agnostic platform for adaptive experimentation.. Retrieved from https://api.semanticscholar.org/CorpusID:73557896
+
+<a id="1">[6]</a> 
+Chollet, F., et al. (2015). Keras. GitHub. Retrieved from https://github.com/fchollet/keras
+
+<a id="1">[7]</a> 
+Mital, U., Dwivedi, D.,  ̈Ozgen Xian, I., Brown, J. B., & Steefel, C. I. (2022, October). Modeling Spatial Distribution of Snow Water Equivalent by Combinin Meteorological and Satellite Data with Lidar Maps. Artificial Intelligence for the Earth Systems, 1 (4), e220010. Retrieved 2022-12-08, from https://journals.ametsoc.org/view/journals/aies/1/4/AIES-D-22-0010.1.xml 
+doi: 10.1175/AIES-D-22-0010.1
 
 
 
