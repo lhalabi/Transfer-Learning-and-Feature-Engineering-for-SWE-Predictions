@@ -32,7 +32,7 @@ We adopted a feed-forward ANN architecture, initially training a Base model on t
 
 • Model TL2: This involved freezing all the weights of the model, removing deeper layers, and adding new layers whose weights were trained on the target data.
 
-The two approaches were picked because the deeper layers help capture the higher-order complexities in the relationship between input features and the output, while the shallower layers generally capture coarser and simpler relationships. However, analysis using permutation feature importance revealed that the transfer learning models under TL1 and TL2 gave lower importance to elevation, accumulated snow, and accumulated precipitation- variables identified as critical for determining SWE in Colorado based on EFA results (Figures 3 and 4). To address this discrepancy, we introduced two additional transfer learning approaches that explicitly prioritized these variables by prescribing their importance:
+The two approaches were picked because the deeper layers help capture the higher-order complexities in the relationship between input features and the output, while the shallower layers generally capture coarser and simpler relationships. Analysis using permutation feature importance revealed that the transfer learning models under TL1 and TL2 gave lower importance to elevation, accumulated snow, and accumulated precipitation- variables identified as critical for determining SWE in Colorado based on EFA results (Figures 3 and 4). To address this discrepancy, we introduced two additional transfer learning approaches that explicitly prioritized these variables by prescribing their importance:
 
 • Model TL1W: This utilized the architecture and hyperparameters of the best performing set of TL1 models but modified the scaled input features by multiplying elevation, accumulated snow, and accumulated precipitation by (scalar) weights equal or greater than 1. These weights were treated as hyperparameters and optimized using Optuna, an open-source framework for automatic hyperparameter optimization.
 
@@ -50,12 +50,12 @@ All models, except the base models, were trained between September and November 
 | ------------- | ------------- |
 | `Base_models.zip` | The 5 trained Base models. The Base model used in transfer learning is Base model 3. |
 | `Local_1.tar` | 12 Local 1 models|
-| `Local_1_W.tar` | 12 Local 1_W models|
+| `Local_1_W.tar` | 12 Local 1W models|
 | `TL1.tar` | 12 TL1 models |
-| `TL1_W.tar.zip` | 12 TL1_W models |
+| `TL1_W.tar.zip` | 12 TL1W models |
 | `TL2.tar` | 12 TL2 models |
-| `TL2_W.tar` | 12 TL2_W models |
-| `Colorado_ScaledLMs.zip` | 12 older Local 1 models that serve as the architecture template of Local 1 and Local 1_W models |
+| `TL2_W.tar` | 12 TL2W models |
+| `Colorado_ScaledLMs.zip` | 12 older Local 1 models that serve as the architecture template of Local 1 and Local 1W models |
 
 ## Code Description
 Bayesian Hyperparameter optimization for Base models and Local 1 models was conducted using the opensource framework Ax, Adaptive Experimentation platform (Bakshy et al., 2018), following this [**tutorial**](https://www.justintodata.com/hyperparameter-tuning-with-python-keras-guide/). The hyperparameter search space included activation function, feature scaling techniques, optimization function, learning rate, number of hidden layers, number of neurons per layer, dropout rate, L1 and L2 regularization rates, and batch size. 
@@ -65,8 +65,8 @@ For TL1 and TL2 models, the hyperparameters were kept consistent with those opti
 | ------------- | ------------- |
 | `California_base_models.ipynb/California_base_models_sample_code.ipynb` | Jupyter Notebook used for hyperparameter optimization, training and testing of ANNs on California data to predict SWE in California. 5 models are trained each with a different training/validation split. The models are called Base models. Notebook California_base_models.ipynb shows the training procedure of Base model 3 and the test results. Base model 3 is the base model used for transfer learning. California_base_models_sample_code.ipynb is a cleaned sample code. |
 | `Local_Hyperparam_Optimization.ipynb` | Jupyter Notebook used for hyperparameter optimization, training and testing of ANNs on Colorado data to predict SWE in Colorado. 12 models are trained and tested using the LOO method since there are 12 SWE maps. The models are the 12 older Local 1 models that serve as the architecture template of Local 1 and Local 1W models. |
-| `TL1-TL2-Local1.ipynb` | Jupyter Notebook used for transfer learning according to approaches TL1 and TL2 and used to train Local 1 models after cloning the archtiectures found in `Colorado_ScaledLMs.zip`.|
-| `TL1W_Training.ipynb/TL2W_Training.ipynb/Local_1W_Training.ipynb` | Jupyter Notebooks used for transfer learning and weighting optimization according to approaches TL1W and TL2W, respectively.|
+| `TL1-TL2-Local1.ipynb` | Jupyter Notebook used for transfer learning according to approaches TL1 and TL2 and used to train Local 1 models after cloning the archtiectures found in `Colorado_ScaledLMs.zip` produced by `Local_Hyperparam_Optimization.ipynb`.|
+| `TL1W_Training.ipynb/TL2W_Training.ipynb` | Jupyter Notebooks used for transfer learning and weighting optimization according to approaches TL1W and TL2W, respectively.|
 | `Local_1W_Training.ipynb` | Jupyter Notebook used for training and weighting optimization according to approach Local 1W.|
 | `FA_winter/FA_summer.ipynb` | Jupyter Notebooks used to apply explanatory factor analysis on California and Colorado winter (March/April) and summer (June) data.|
 | `Colorado_data_processing.ipynb/California_data_processing.ipynb` | Jupyter Notebooks used to process the raw Colorado/California data (ASO Lidar-maps, Elevation maps, and PRISM data), generates the datasets (CSV files) for training ANNs and plot backward accumulation plots. |
