@@ -119,16 +119,26 @@ In contrast, while elevation is also weighted at 1 in Local 1W, its importance r
 | TL1W     | 3         | 16               | 5                         |
 | TL2W     | 1         | 16               | 3                         |
 
-# Feature Importance Comparison
+# Feature Importance Box Plots
 
-### TL2 Models
-![TL2 Models](Figures/BOXplot_feature_imp_test_TL2_seed=900.png)
+<div align="center">
+  <h4>(a) Local Models</h4>
+  <img src="Figures/BOXplot_feature_imp_test_Local_seed=900.png" alt="Local Models" width="80%">
+</div>
 
-### Local Models
-![Local Models](Figures/BOXplot_feature_imp_test_Local_seed=900.png)
+<div align="center">
+  <h4>(b) TL1 Models</h4>
+  <img src="Figures/BOXplot_feature_imp_test_TL1_seed=900.png" alt="TL1 Models" width="80%">
+</div>
 
-### TL1 Models
-![TL1 Models](Figures/BOXplot_feature_imp_test_TL1_seed=900.png)
+<div align="center">
+  <h4>(c) TL2 Models</h4>
+  <img src="Figures/BOXplot_feature_imp_test_TL2_seed=900.png" alt="TL2 Models" width="80%">
+</div>
+
+<p align="center">
+  <b>Figure 5:</b> Feature importance box plots for (a) Local Models, (b) TL1 Models, and (c) TL2 Models. The x-axis shows the variables, and the y-axis represents importance measured as R<sup>2</sup> decrease.
+</p>
 
 
 
