@@ -119,6 +119,17 @@ In contrast, while elevation is also weighted at 1 in Local 1W, its importance r
 | TL1W     | 3         | 16               | 5                         |
 | TL2W     | 1         | 16               | 3                         |
 
+# Feature Importance Comparison
+
+### TL2 Models
+![TL2 Models](Figures/BOXplot_feature_imp_test_TL2_seed=900.png)
+
+### Local Models
+![Local Models](Figures/BOXplot_feature_imp_test_Local_seed=900.png)
+
+### TL1 Models
+![TL1 Models](Figures/BOXplot_feature_imp_test_TL1_seed=900.png)
+
 
 
 
